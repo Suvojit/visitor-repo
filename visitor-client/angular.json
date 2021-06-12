@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "visitor-app"
+    }
+  },
+  "defaultProject": "visitor-app",
+  "cli": {
+    "analytics": false
+  }
 }

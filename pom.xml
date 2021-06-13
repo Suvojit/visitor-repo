@@ -13,10 +13,8 @@
 	<properties>
 		<java.version>8</java.version>
 	</properties>
-
 	<modules>
 		<module>visitor-client</module>
 		<module>visitor-backend</module>
 	</modules>
-
 </project>

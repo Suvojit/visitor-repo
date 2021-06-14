@@ -12,21 +12,36 @@ import java.util.Optional;
 @AllArgsConstructor
 public class VisitorService {
 
-    private final VisitorRepository visitorRepository;
+  private final VisitorRepository visitorRepository;
 
-    public List<Visitor> getAll(){
-        return this.visitorRepository.findAll();
-    }
+  public List<Visitor> getAll() {
+    return this.visitorRepository.findAll();
+  }
 
-    public Optional<Visitor> getVisitor(Integer id){
-        return this.visitorRepository.findById(id);
-    }
+  public Optional<Visitor> getVisitor(Integer id) {
+    return this.visitorRepository.findById(id);
+  }
 
-    public Visitor save(Visitor visitor) {
-        return this.visitorRepository.save(visitor);
-    }
+  public Visitor save(Visitor visitor) {
+    return this.visitorRepository.save(visitor);
+  }
 
-    public void delete(Integer id) {
-        this.visitorRepository.deleteById(id);
-    }
+  public Visitor update(Visitor visitor) {
+    return this.getVisitor(visitor.getId())
+      .map(presentVisitor -> this.visitorRepository.save(visitor))
+      .orElseThrow(() -> {
+        throw new IndexOutOfBoundsException();
+      });
+  }
+
+  public void delete(Integer id) {
+    this.getVisitor(id)
+      .map(Visitor::getId)
+      .ifPresentOrElse(
+        this.visitorRepository::deleteById,
+        () -> {
+          throw new IndexOutOfBoundsException(); // TODO: Needs to change to actual exception
+        }
+      );
+  }
 }

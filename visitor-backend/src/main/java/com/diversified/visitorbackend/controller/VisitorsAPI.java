@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/visitors")
+@RequestMapping("/api/visitors")
 @AllArgsConstructor
 public class VisitorsAPI {
 

@@ -1,0 +1,36 @@
+<mat-toolbar color="primary">
+  <span>Visitor Application</span>
+</mat-toolbar>
+
+<form [formGroup]="visitorForm" (ngSubmit)="submit()">
+
+  <mat-form-field class="example-full-width">
+    <mat-label>First Name</mat-label>
+    <input type="text" matInput formControlName="firstName" placeholder="John">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Last Name</mat-label>
+    <input type="text" matInput formControlName="lastName" placeholder="Doe">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Submit</button>
+</form>
+
+<div *ngIf="visitors$ | async as visitors">
+<mat-table [dataSource]="visitors" class="mat-elevation-z8">
+  <ng-container matColumnDef="firstName">
+    <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="lastName">
+    <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+</div>

@@ -37,11 +37,8 @@ public class VisitorService {
   public void delete(Integer id) {
     this.getVisitor(id)
       .map(Visitor::getId)
-      .ifPresentOrElse(
-        this.visitorRepository::deleteById,
-        () -> {
-          throw new IndexOutOfBoundsException(); // TODO: Needs to change to actual exception
-        }
+      .ifPresent(
+        this.visitorRepository::deleteById
       );
   }
 }

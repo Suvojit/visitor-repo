@@ -21,39 +21,39 @@ public class Visitor implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    private String building_name;
+    private String firstName;
 
-    private Date visiting_date;
-
-    private String firstname;
-
-    private String lastname;
+    private String lastName;
 
     private String organization;
 
-    private String license_plate;
+    private String buildingName;
+
+    private Date visitingDate;
+
+    private String licensePlate;
 
     private String type;
 
-    private String meeting_room;
+    private String meetingRoom;
 
     private String explanation;
 
     private String remarks;
 
-    private String contact_email;
+    private String contactEmail;
 
-    private String contact_telephone;
+    private String contactTelephone;
 
-    private int badge_id;
+    private int badgeId;
 
-    private Boolean checked_in;
+    private Boolean checkedIin;
 
-    private Boolean checked_out;
+    private Boolean checkedOut;
 
-    private Date checked_in_time;
+    private Date checkedInTime;
 
-    private Date checked_out_time;
+    private Date checkedOutTime;
 
     private byte[] image;
 
